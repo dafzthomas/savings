@@ -65,6 +65,7 @@ var getPennyCostForEachWeek = function (currentWeek, currentDay) {
 var runMaths = function () {
     var possiblePennySavedElement = document.getElementById('possiblePennySaving');
     var pennySavingsSoFar = document.getElementById('pennySavingsSoFar');
+    var addToday = document.getElementById('addToday');
 
 
     var daysInYear = null,
@@ -77,6 +78,7 @@ var runMaths = function () {
     }
 
     var currentDay = getCurrentDay();
+    addToday.innerHTML = '£' + currentDay / 100;
     populateArray();
 
     console.log('saving so far (pennies): -- £', getPennySavingSoFar(currentDay) / 100);
