@@ -64,6 +64,7 @@ var getPennyCostForEachWeek = function (currentWeek, currentDay) {
 
 var runMaths = function () {
     var possiblePennySavedElement = document.getElementById('possiblePennySaving');
+    var pennySavingsSoFar = document.getElementById('pennySavingsSoFar');
 
 
     var daysInYear = null,
@@ -79,18 +80,16 @@ var runMaths = function () {
     populateArray();
 
     console.log('saving so far (pennies): -- £', getPennySavingSoFar(currentDay) / 100);
+    var penniesSoFar = getPennySavingSoFar(currentDay) / 100;
+    pennySavingsSoFar.innerHTML = '£' + penniesSoFar;
 
     console.log('saving by end of year (pennies): -- £', getPennySavingSoFar(daysInYear) / 100);
-
     var possibleSavingsPenny = getPennySavingSoFar(daysInYear) / 100;
-    console.log('possiblePennySavedElement', possiblePennySavedElement);
     possiblePennySavedElement.innerHTML = '£' + possibleSavingsPenny;
 
     console.log('week number:   ', currentWeek);
 
     console.log('saving this week (pennies): -- £', weeksCostArray[currentWeek] / 100);
-
-    return;
 };
 
 runMaths();
