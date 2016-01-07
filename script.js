@@ -5,13 +5,15 @@ Date.prototype.isLeapYear = function(utc) {
     return !(y % 4) && (y % 100) || !(y % 400);
 };
 
-Date.prototype.getWeek = function() {
-    var onejan = new Date(this.getFullYear(), 0, 1);
-    return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+Date.prototype.getWeekNumber = function(){
+    var d = new Date(+this);
+    d.setHours(0,0,0);
+    d.setDate(d.getDate()+4-(d.getDay()||7));
+    return Math.floor((((d-new Date(d.getFullYear(),0,1))/8.64e7)+1)/7);
 };
 
 var myArray = [],
-    currentWeek = (new Date()).getWeek();
+    currentWeek = (new Date()).getWeekNumber();
 
 var populateArray = function () {
     for(var i = 1; i <= 365; i++) {
@@ -38,7 +40,7 @@ var getPennySavingSoFar = function (currentDay) {
     return cost;
 };
 
-var getPennyCostForEachWeek = function (currentWeek, currentDay) {
+var getPennyCostForEachWeek = function () {
     var weeks = [],
         weeksCost = [];
 
@@ -114,10 +116,18 @@ var runMaths = function () {
     }
 
     console.log('week number:   ', currentWeek);
+    console.log('weeksCostArray:   ', weeksCostArray);
+    console.log('weeksCostArray length:   ', weeksCostArray.length);
 
-    console.log('saving this week (pennies): -- £', weeksCostArray[currentWeek] / 100);
+    console.log('saving this week (pennies): -- £', weeksCostArray[currentWeek - 1] / 100);
 
-    var possibleSavingsPennyThisWeek = weeksCostArray[currentWeek] / 100;
+    var currentWeekAnim = new countUp("currentWeek", 0, currentWeek, 0, 2.5, animOptions);
+    currentWeekAnim.start();
+
+    var currentDay = new countUp("currentDay", 0, currentDay, 0, 2.5, animOptions);
+    currentDay.start();
+
+    var possibleSavingsPennyThisWeek = weeksCostArray[currentWeek - 1] / 100;
     if (possibleSavingsPennyThisWeek < 1) {
         possibleSavingsPennyThisWeekElement.innerHTML = possibleSavingsPennyThisWeek;
     } else {
