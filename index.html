@@ -3,14 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="countUp.js"></script>
     <title>Pennies Saving!</title>
 </head>
 <body>
-    <h1>Pennies Saving!</h1>
-    <p>Simple, save 1p on the first day of the year; 2p on the second etc. (152p or £1.52 on day 152 of the year)</p>
-    <p>Possible penny savings this year: <span id="possiblePennySaving">Oops I don't know! Please enable JavaScript</span></p>
-    <p>Penny savings so far (if you've been adding each day of this year!): <span id="pennySavingsSoFar">Oops I don't know! Please enable JavaScript</span></p>
-    <p>Adding to pot today: <span id="addToday">Oops I don't know! Please enable JavaScript</span></p>
+    <div class="wrapper animated fadeInUp">
+        <div class="content">
+            <h1>Pennies Saving!</h1>
+            <div class="description">
+                <p>Simple, save 1p on the first day of the year; 2p on the second etc. (152p or £1.52 on day 152 of the year)</p>
+            </div>
+            <div class="savings add-today">
+                <p>Adding to pot today</p>
+                <div class="monies">£<span id="addToday">Oops I don't know! Please enable JavaScript</span></div>
+            </div>
+            <div class="savings possible-savings">
+                <p>Possible penny savings this year</p>
+                <div class="monies">£<span id="possiblePennySaving">Oops I don't know! Please enable JavaScript</span></div>
+            </div>
+            <div class="savings savings-so-far">
+                <p>Penny savings so far (if you've been adding each day of this year!)</p>
+                <div class="monies">£<span id="pennySavingsSoFar">Oops I don't know! Please enable JavaScript</span></div>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

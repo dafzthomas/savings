@@ -1,6 +1,4 @@
-'use strict';
-
-console.log('Open');
+/* globals: countUp */
 
 Date.prototype.isLeapYear = function(utc) {
     var y = utc ? this.getUTCFullYear() : this.getFullYear();
@@ -67,6 +65,15 @@ var runMaths = function () {
     var pennySavingsSoFar = document.getElementById('pennySavingsSoFar');
     var addToday = document.getElementById('addToday');
 
+    var animOptions = {
+        useEasing : true,
+        useGrouping : true,
+        separator : ',',
+        decimal : '.',
+        prefix : '',
+        suffix : ''
+    };
+
 
     var daysInYear = null,
         weeksCostArray = getPennyCostForEachWeek(currentWeek, currentDay);
@@ -78,16 +85,36 @@ var runMaths = function () {
     }
 
     var currentDay = getCurrentDay();
-    addToday.innerHTML = '£' + currentDay / 100;
+    var todaysPennys = currentDay / 100;
+
+    if (todaysPennys < 1.00) {
+        addToday.innerHTML = todaysPennys;
+    } else {
+        var pennySavingsSoFarAnim = new countUp("addToday", 0, todaysPennys, 2, 2.5, animOptions);
+        pennySavingsSoFarAnim.start();
+    }
+
     populateArray();
 
-    console.log('saving so far (pennies): -- £', getPennySavingSoFar(currentDay) / 100);
     var penniesSoFar = getPennySavingSoFar(currentDay) / 100;
-    pennySavingsSoFar.innerHTML = '£' + penniesSoFar;
+    console.log('saving so far (pennies): -- ', penniesSoFar);
+
+    if (penniesSoFar < 5) {
+        pennySavingsSoFar.innerHTML = penniesSoFar;
+    } else {
+        var pennySavingsSoFarAnim = new countUp("pennySavingsSoFar", 0, penniesSoFar, 2, 2.5, animOptions);
+        pennySavingsSoFarAnim.start();
+    }
 
     console.log('saving by end of year (pennies): -- £', getPennySavingSoFar(daysInYear) / 100);
     var possibleSavingsPenny = getPennySavingSoFar(daysInYear) / 100;
-    possiblePennySavedElement.innerHTML = '£' + possibleSavingsPenny;
+
+    if (possibleSavingsPenny < 5) {
+        possiblePennySavedElement.innerHTML = possibleSavingsPenny;
+    } else {
+        var possibleSavingsPennyAnim = new countUp("possiblePennySaving", 0, possibleSavingsPenny, 2, 2.5, animOptions);
+        possibleSavingsPennyAnim.start();
+    }
 
     console.log('week number:   ', currentWeek);
 

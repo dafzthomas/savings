@@ -1,0 +1,72 @@
+@import url(https://fonts.googleapis.com/css?family=Lato|Permanent+Marker);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+body {
+    position: relative;
+    background: #008bff;
+    font-size: 52.5%;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 875px;
+}
+
+.content {
+    font-size: 1.1rem;
+    background: #FFF;
+    margin: 10px;
+    padding: 20px;
+}
+
+.content h1 {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.content .description {
+    padding: 10px 0 20px 0;
+}
+
+.content .savings {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.content .savings .monies {
+    font-size: 2.5rem;
+    padding: 15px;
+}
+
+@media screen and (max-width: 535px) {
+    .content h1 {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 416px) {
+    .content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 357px) {
+    * {
+        font-size: 1rem;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+}
