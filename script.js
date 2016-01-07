@@ -63,6 +63,7 @@ var getPennyCostForEachWeek = function (currentWeek, currentDay) {
 var runMaths = function () {
     var possiblePennySavedElement = document.getElementById('possiblePennySaving');
     var pennySavingsSoFar = document.getElementById('pennySavingsSoFar');
+    var possibleSavingsPennyThisWeekElement = document.getElementById('possibleSavingsPennyThisWeekElement');
     var addToday = document.getElementById('addToday');
 
     var animOptions = {
@@ -97,8 +98,6 @@ var runMaths = function () {
     populateArray();
 
     var penniesSoFar = getPennySavingSoFar(currentDay) / 100;
-    console.log('saving so far (pennies): -- ', penniesSoFar);
-
     if (penniesSoFar < 5) {
         pennySavingsSoFar.innerHTML = penniesSoFar;
     } else {
@@ -106,9 +105,7 @@ var runMaths = function () {
         pennySavingsSoFarAnim.start();
     }
 
-    console.log('saving by end of year (pennies): -- £', getPennySavingSoFar(daysInYear) / 100);
     var possibleSavingsPenny = getPennySavingSoFar(daysInYear) / 100;
-
     if (possibleSavingsPenny < 5) {
         possiblePennySavedElement.innerHTML = possibleSavingsPenny;
     } else {
@@ -119,6 +116,14 @@ var runMaths = function () {
     console.log('week number:   ', currentWeek);
 
     console.log('saving this week (pennies): -- £', weeksCostArray[currentWeek] / 100);
+
+    var possibleSavingsPennyThisWeek = weeksCostArray[currentWeek] / 100;
+    if (possibleSavingsPennyThisWeek < 1) {
+        possibleSavingsPennyThisWeekElement.innerHTML = possibleSavingsPennyThisWeek;
+    } else {
+        var possibleSavingsPennyThisWeekAnim = new countUp("possibleSavingsPennyThisWeekElement", 0, possibleSavingsPennyThisWeek, 2, 2.5, animOptions);
+        possibleSavingsPennyThisWeekAnim.start();
+    }
 };
 
 runMaths();
