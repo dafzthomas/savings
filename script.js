@@ -100,7 +100,7 @@ var runMaths = function () {
     populateArray();
 
     var penniesSoFar = getPennySavingSoFar(currentDay) / 100;
-    if (penniesSoFar < 5) {
+    if (penniesSoFar < 1) {
         pennySavingsSoFar.innerHTML = penniesSoFar;
     } else {
         var pennySavingsSoFarAnim = new countUp("pennySavingsSoFar", 0, penniesSoFar, 2, 2.5, animOptions);
