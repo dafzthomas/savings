@@ -93,8 +93,8 @@ var runMaths = function () {
     if (todaysPennys < 1.00) {
         addToday.innerHTML = todaysPennys;
     } else {
-        var pennySavingsSoFarAnim = new countUp("addToday", 0, todaysPennys, 2, 2.5, animOptions);
-        pennySavingsSoFarAnim.start();
+        var todaysPennySavingsSoFarAnim = new countUp("addToday", 0, todaysPennys, 2, 2.5, animOptions);
+        todaysPennySavingsSoFarAnim.start();
     }
 
     populateArray();
@@ -115,11 +115,6 @@ var runMaths = function () {
         possibleSavingsPennyAnim.start();
     }
 
-    console.log('week number:   ', currentWeek);
-    console.log('weeksCostArray:   ', weeksCostArray);
-    console.log('weeksCostArray length:   ', weeksCostArray.length);
-
-    console.log('saving this week (pennies): -- £', weeksCostArray[currentWeek - 1] / 100);
 
     var currentWeekAnim = new countUp("currentWeek", 0, currentWeek, 0, 2.5, animOptions);
     currentWeekAnim.start();
@@ -127,7 +122,7 @@ var runMaths = function () {
     var currentDay = new countUp("currentDay", 0, currentDay, 0, 2.5, animOptions);
     currentDay.start();
 
-    var possibleSavingsPennyThisWeek = weeksCostArray[currentWeek - 1] / 100;
+    var possibleSavingsPennyThisWeek = currentWeek;
     if (possibleSavingsPennyThisWeek < 1) {
         possibleSavingsPennyThisWeekElement.innerHTML = possibleSavingsPennyThisWeek;
     } else {

@@ -17,9 +17,17 @@ body {
     font-size: 52.5%;
 }
 
+footer {
+    text-align: center;
+}
+
+footer a {
+    color: #008bff;
+}
+
 .wrapper {
     margin: 0 auto;
-    max-width: 875px;
+    max-width: 1000px;
 }
 
 .content {
@@ -37,16 +45,27 @@ body {
 
 .content .description {
     padding: 10px 0 20px 0;
+    border-bottom: 1px dashed #000;
 }
 
 .content .savings {
     text-align: center;
-    padding-bottom: 10px;
+    padding: 10px 5px;
+    min-width: 50%;
+    max-width: 50%;
+
 }
 
 .content .savings .monies {
     font-size: 2.5rem;
     padding: 15px;
+}
+
+.savings-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 35px;
 }
 
 @media screen and (max-width: 535px) {
