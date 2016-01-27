@@ -141,7 +141,7 @@ var runMaths = function () {
 
     console.log('poundsSavingsArray', poundsSavingsArray);
 
-    var possibleSavingsPoundsThisWeek = poundsSavingsArray[currentWeek];
+    var possibleSavingsPoundsThisWeek = poundsSavingsArray[currentWeek - 1];
     var possibleSavingsPoundsThisWeekAnim = new countUp("possibleSavingsPoundsThisWeekElement", 0, possibleSavingsPoundsThisWeek, 2, 2.5, animOptions);
     possibleSavingsPoundsThisWeekAnim.start();
 
