@@ -68,9 +68,21 @@ footer a {
     margin-top: 35px;
 }
 
+.remember {
+
+}
+
+.remember h2{
+    text-align: center;
+}
+
 @media screen and (max-width: 535px) {
     .content h1 {
         font-size: 3rem;
+    }
+
+    .content .savings {
+        min-width: 100%;
     }
 }
 

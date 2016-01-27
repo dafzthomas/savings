@@ -66,6 +66,7 @@ var runMaths = function () {
     var possiblePennySavedElement = document.getElementById('possiblePennySaving');
     var pennySavingsSoFar = document.getElementById('pennySavingsSoFar');
     var possibleSavingsPennyThisWeekElement = document.getElementById('possibleSavingsPennyThisWeekElement');
+    var possibleSavingsPoundsThisWeekElement = document.getElementById('possibleSavingsPoundsThisWeekElement');
     var addToday = document.getElementById('addToday');
 
     var animOptions = {
@@ -129,6 +130,25 @@ var runMaths = function () {
         var possibleSavingsPennyThisWeekAnim = new countUp("possibleSavingsPennyThisWeekElement", 0, possibleSavingsPennyThisWeek, 2, 2.5, animOptions);
         possibleSavingsPennyThisWeekAnim.start();
     }
+
+    var poundsSavingsArray = [];
+    var addThis = null;
+    for (var i = 1; i < 53; i++) {
+        addThis += i;
+
+        poundsSavingsArray.push(addThis);
+    }
+
+    console.log('poundsSavingsArray', poundsSavingsArray);
+
+    var possibleSavingsPoundsThisWeek = poundsSavingsArray[currentWeek];
+    var possibleSavingsPoundsThisWeekAnim = new countUp("possibleSavingsPoundsThisWeekElement", 0, possibleSavingsPoundsThisWeek, 2, 2.5, animOptions);
+    possibleSavingsPoundsThisWeekAnim.start();
+
+    var possibleSavingsPounds = poundsSavingsArray[poundsSavingsArray.length -1];
+    var possibleSavingsPoundsAnim = new countUp("possibleSavingsPoundsElement", 0, possibleSavingsPounds, 2, 2.5, animOptions);
+    possibleSavingsPoundsAnim.start();
+
 };
 
 runMaths();
