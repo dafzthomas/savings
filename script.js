@@ -62,31 +62,31 @@ var getPennyCostForEachWeek = function () {
     return weeksCost;
 };
 
-var runMaths = function () {
-    var possiblePennySavedElement = document.getElementById('possiblePennySaving');
-    var pennySavingsSoFar = document.getElementById('pennySavingsSoFar');
-    var possibleSavingsPennyThisWeekElement = document.getElementById('possibleSavingsPennyThisWeekElement');
-    var possibleSavingsPoundsThisWeekElement = document.getElementById('possibleSavingsPoundsThisWeekElement');
-    var addToday = document.getElementById('addToday');
-
-    var animOptions = {
-        useEasing : true,
-        useGrouping : true,
-        separator : ',',
-        decimal : '.',
-        prefix : '',
-        suffix : ''
-    };
-
-
-    var daysInYear = null,
-        weeksCostArray = getPennyCostForEachWeek(currentWeek, currentDay);
-
+var getDaysInYear = function () {
     if ((new Date).isLeapYear() == false) {
-        daysInYear = 365;
+        return 365;
     } else {
-        daysInYear = 366
+        return 366;
     }
+};
+
+var runMaths = function () {
+    var daysInYear = getDaysInYear(),
+        weeksCostArray = getPennyCostForEachWeek(currentWeek, currentDay),
+        possiblePennySavedElement = document.getElementById('possiblePennySaving'),
+        pennySavingsSoFar = document.getElementById('pennySavingsSoFar'),
+        possibleSavingsPennyThisWeekElement = document.getElementById('possibleSavingsPennyThisWeekElement'),
+        possibleSavingsPoundsThisWeekElement = document.getElementById('possibleSavingsPoundsThisWeekElement'),
+        addToday = document.getElementById('addToday'),
+        animOptions = {
+            useEasing : true,
+            useGrouping : true,
+            separator : ',',
+            decimal : '.',
+            prefix : '',
+            suffix : ''
+        };
+
 
     var currentDay = getCurrentDay();
     var todaysPennys = currentDay / 100;
@@ -120,8 +120,8 @@ var runMaths = function () {
     var currentWeekAnim = new countUp("currentWeek", 0, currentWeek, 0, 2.5, animOptions);
     currentWeekAnim.start();
 
-    var currentDay = new countUp("currentDay", 0, currentDay, 0, 2.5, animOptions);
-    currentDay.start();
+    var currentDayAnim = new countUp("currentDay", 0, currentDay, 0, 2.5, animOptions);
+    currentDayAnim.start();
 
     var possibleSavingsPennyThisWeek = currentWeek;
     if (possibleSavingsPennyThisWeek < 1) {
@@ -138,8 +138,6 @@ var runMaths = function () {
 
         poundsSavingsArray.push(addThis);
     }
-
-    console.log('poundsSavingsArray', poundsSavingsArray);
 
     var possibleSavingsPoundsThisWeek = poundsSavingsArray[currentWeek - 1];
     var possibleSavingsPoundsThisWeekAnim = new countUp("possibleSavingsPoundsThisWeekElement", 0, possibleSavingsPoundsThisWeek, 2, 2.5, animOptions);
